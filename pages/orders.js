@@ -17,6 +17,8 @@ export default function ShowOrders() {
     getOrders(user.uid).then(setOrders);
   };
 
+  console.warn(orders);
+
   // TODO: make the call to the API to get all the Orders on component render
   useEffect(() => {
     getAllTheOrders();
@@ -28,7 +30,9 @@ export default function ShowOrders() {
         <Link href="/order/new" passHref>
           <Button>Add An Order</Button>
         </Link>
-        {orders.map((order) => <OrderCard key={order.firebaseKey} orderObj={order} onUpdate={getAllTheOrders} />)}
+        {orders.map((order) => (
+          <OrderCard key={order.firebaseKey} orderObj={order} onUpdate={getAllTheOrders} />
+        ))}
       </div>
     </>
   );

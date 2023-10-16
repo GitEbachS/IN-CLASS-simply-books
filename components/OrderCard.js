@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
@@ -7,6 +6,8 @@ import Link from 'next/link';
 import { deleteOrder } from '../api/orderData';
 
 function OrderCard({ orderObj, onUpdate }) {
+  // FOR DELETE, WE NEED TO REMOVE THE order AND HAVE THE VIEW RERENDER,
+  // SO WE PASS THE FUNCTION FROM THE PARENT THAT GETS THE orderS
   const deleteAnOrder = () => {
     if (window.confirm(`Do you want to delete order by ${orderObj.customer_name}?`)) {
       deleteOrder(orderObj.firebaseKey).then(() => onUpdate());

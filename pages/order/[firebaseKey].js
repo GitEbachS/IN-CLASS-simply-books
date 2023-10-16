@@ -16,7 +16,6 @@ export default function ViewOrder() {
 
   const router = useRouter();
   const { firebaseKey } = router.query;
-
   useEffect(() => {
     getOrderDetails(firebaseKey).then(setOrderDetails);
     getBooksNotInTheOrder(user.uid, firebaseKey).then(setBooksNotInOrder);
@@ -43,7 +42,7 @@ export default function ViewOrder() {
         <div className="d-flex flex-column">
           <div className="text-white ms-5 details">
             <h2>{orderDetails.customer_name} {orderDetails.orderType}</h2>
-            Order Email: <a href="mailto:aja@aja.com">${orderDetails.email}</a>
+            Order Email: <a href="mailto:aja@aja.com">{orderDetails.email}</a>
           </div>
           <h4>Order Total ${total?.toFixed(2)}</h4>
           <h3> Add Books to Order</h3>

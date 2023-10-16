@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form } from 'react-bootstrap';
 import { useRouter } from 'next/router';
@@ -15,6 +15,10 @@ export default function OrderForm({ orderObj }) {
   const { user } = useAuth();
   const [formInput, setFormInput] = useState({ ...intialState, uid: user.uid });
   const router = useRouter();
+
+  useEffect(() => {
+    if (orderObj.firebaseKey) setFormInput(orderObj);
+  }, [orderObj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
