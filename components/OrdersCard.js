@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { deleteOrder } from '../api/orderData';
 
-function OrderCard({ orderObj, onUpdate }) {
+function OrdersCard({ orderObj, onUpdate }) {
   // FOR DELETE, WE NEED TO REMOVE THE order AND HAVE THE VIEW RERENDER,
   // SO WE PASS THE FUNCTION FROM THE PARENT THAT GETS THE orderS
   const deleteAnOrder = () => {
@@ -34,7 +34,7 @@ function OrderCard({ orderObj, onUpdate }) {
   );
 }
 
-OrderCard.propTypes = {
+OrdersCard.propTypes = {
   orderObj: PropTypes.shape({
     customer_name: PropTypes.string,
     orderType: PropTypes.string,
@@ -45,4 +45,4 @@ OrderCard.propTypes = {
   onUpdate: PropTypes.func.isRequired,
 };
 
-export default OrderCard;
+export default OrdersCard;
