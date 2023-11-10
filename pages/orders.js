@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import { getOrders } from '../api/orderData';
 import { useAuth } from '../utils/context/authContext';
-import OrderCard from '../components/OrderCard';
+import OrdersCard from '../components/OrdersCard';
 
 export default function ShowOrders() {
   // TODO: Set a state for Orders
@@ -17,8 +17,6 @@ export default function ShowOrders() {
     getOrders(user.uid).then(setOrders);
   };
 
-  console.warn(orders);
-
   // TODO: make the call to the API to get all the Orders on component render
   useEffect(() => {
     getAllTheOrders();
@@ -31,7 +29,7 @@ export default function ShowOrders() {
           <Button>Add An Order</Button>
         </Link>
         {orders.map((order) => (
-          <OrderCard key={order.firebaseKey} orderObj={order} onUpdate={getAllTheOrders} />
+          <OrdersCard key={order.firebaseKey} orderObj={order} onUpdate={getAllTheOrders} />
         ))}
       </div>
     </>
