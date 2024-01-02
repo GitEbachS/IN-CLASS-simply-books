@@ -1,7 +1,6 @@
 import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
-
 const getAuthors = (uid) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/authors.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
@@ -20,7 +19,6 @@ const getAuthors = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// FIXME: CREATE AUTHOR
 const createAuthor = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/authors.json`, {
     method: 'POST',
@@ -33,7 +31,6 @@ const createAuthor = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// FIXME: GET SINGLE AUTHOR
 const getSingleAuthor = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/authors/${firebaseKey}.json`, {
     method: 'GET',
@@ -46,7 +43,6 @@ const getSingleAuthor = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// FIXME: DELETE AUTHOR
 const deleteSingleAuthor = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/authors/${firebaseKey}.json`, {
     method: 'DELETE',
@@ -59,7 +55,6 @@ const deleteSingleAuthor = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// FIXME: UPDATE AUTHOR
 const updateAuthor = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/authors/${payload.firebaseKey}.json`, {
     method: 'PATCH',
@@ -72,7 +67,6 @@ const updateAuthor = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// TODO: GET A SINGLE AUTHOR'S BOOKS
 const getAuthorBooks = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/books.json?orderBy="author_id"&equalTo="${firebaseKey}"`, {
     method: 'GET',
@@ -107,5 +101,4 @@ export {
   updateAuthor,
   getAuthorBooks,
   favoriteAuthors,
-  // getAuthorBooks,
 };
